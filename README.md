@@ -58,7 +58,7 @@ docker-compose exec web python manage.py createsuperuser
  Bearer <полученный_access_токен>
 ```
 http://localhost:8080/swagger/
-То есть обязательно введите префикс Bearer перед токеном. Это гарантирует, что при отправке запроса заголовок будет выглядеть так:
+То есть обязательно введите префикс Bearer перед токеном. 
 
 
 ```bash
