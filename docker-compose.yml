@@ -1,0 +1,46 @@
+services:
+  web:
+    build: .
+    command: gunicorn awards_api.wsgi:application --bind 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8080:8000"
+    depends_on:
+      - db
+      - redis
+
+  celery:
+    build: .
+    command: celery -A awards_api worker -l info
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+      - redis
+
+  celery-beat:
+    build: .
+    command: celery -A awards_api beat -l info
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+      - redis
+
+  db:
+    image: postgres:13
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_DB=awards_db
+      - POSTGRES_USER=awards_user
+      - POSTGRES_PASSWORD=awards_pass
+    ports:
+      - "15432:5432"
+
+  redis:
+    image: redis:alpine
+
+volumes:
+  postgres_data:

@@ -1,0 +1,10 @@
+Django>=3.2,<4.0
+djangorestframework
+django-cors-headers
+djangorestframework-simplejwt
+drf-yasg
+celery
+redis
+psycopg2-binary
+gunicorn
+whitenoise
