@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 
+
 class ScheduledReward(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     amount = models.IntegerField()
@@ -9,6 +10,7 @@ class ScheduledReward(models.Model):
 
     def __str__(self):
         return f"ScheduledReward for {self.user.username} of {self.amount} at {self.execute_at}"
+
 
 class RewardLog(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)

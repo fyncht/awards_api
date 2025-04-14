@@ -4,6 +4,7 @@ from django.utils import timezone
 from .models import ScheduledReward
 from .tasks import process_scheduled_reward
 
+
 @receiver(post_save, sender=ScheduledReward)
 def schedule_reward_task(sender, instance, created, **kwargs):
     if created and not instance.executed:

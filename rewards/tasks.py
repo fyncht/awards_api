@@ -3,6 +3,7 @@ from django.utils import timezone
 from django.db import transaction
 from .models import ScheduledReward, RewardLog
 
+
 @shared_task
 def process_scheduled_reward(scheduled_reward_id):
     try:

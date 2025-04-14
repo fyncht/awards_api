@@ -54,7 +54,6 @@ TEMPLATES = [
     },
 ]
 
-
 WSGI_APPLICATION = 'awards_api.wsgi.application'
 
 # Конфигурация базы данных (PostgreSQL)
@@ -95,13 +94,16 @@ STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
-
 SWAGGER_SETTINGS = {
     'SECURITY_DEFINITIONS': {
         'Bearer': {
             'type': 'apiKey',
-            'name': 'Authorization',
+            'name': 'Authorization:',
             'in': 'header'
         }
     },
+}
+
+SIMPLE_JWT = {
+    'AUTH_HEADER_TYPES': ('Bearer',),
 }
